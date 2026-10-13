@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>استبيان موعد حصة المراجعة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f5;--card:#fff;--tx:#1a2233;--mut:#5d687c;--navy:#17294d;--navy2:#22407a;--gold:#a8832c;--bd:#cfd6e2;--ok:#17703a;--okb:#e4f3ea;--no:#a52a1f;--nob:#fbe9e7;--sel:#e7edf9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f141d;--card:#18202d;--tx:#e9edf4;--mut:#9aa6ba;--navy:#0c1730;--navy2:#8fa9e6;--gold:#d2ad55;--bd:#2f3a4e;--ok:#6fd49a;--okb:#12301f;--no:#ff9a90;--nob:#3a1b18;--sel:#1f2c47}}
+:root[data-theme="dark"]{--bg:#0f141d;--card:#18202d;--tx:#e9edf4;--mut:#9aa6ba;--navy:#0c1730;--navy2:#8fa9e6;--gold:#d2ad55;--bd:#2f3a4e;--ok:#6fd49a;--okb:#12301f;--no:#ff9a90;--nob:#3a1b18;--sel:#1f2c47}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.8 "IBM Plex Sans Arabic",Tahoma,Arial,sans-serif}
+header{background:var(--navy);color:#fff;border-bottom:4px solid var(--gold);padding:18px 16px;text-align:center}
+header small{display:block;color:#c9d3ea;font-size:13px}
+header h1{font:700 26px/1.5 Amiri,"Times New Roman",serif;margin:2px 0}
+main{max-width:680px;margin:0 auto;padding:18px 14px 40px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:22px;margin-bottom:16px}
+.card h2{font:700 21px/1.6 Amiri,serif;margin:0 0 6px;color:var(--navy2)}
+.mut{color:var(--mut);font-size:14px}
+.q{font-weight:600;margin:18px 0 4px}
+input[type=text]{font:inherit;width:100%;padding:11px 12px;border:1px solid var(--bd);border-radius:5px;background:var(--bg);color:var(--tx)}
+input:focus,button:focus-visible{outline:2px solid var(--navy2);outline-offset:2px}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:5px;padding:12px 24px;font-weight:600;width:100%;margin-top:14px}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.alt{background:transparent;color:var(--navy2);border:1px solid var(--navy2)}
+.opt{display:flex;gap:10px;align-items:center;width:100%;text-align:start;background:var(--card);color:var(--tx);border:1.5px solid var(--bd);border-radius:5px;padding:11px 14px;margin:8px 0;font-size:17px}
+.opt .mk{flex:none;width:20px;height:20px;border:2px solid var(--mut);border-radius:50%}
+.opt.multi .mk{border-radius:4px}
+.opt.s{background:var(--sel);border-color:var(--navy2)}.opt.s .mk{background:var(--navy2);border-color:var(--navy2)}
+.opt bdi{margin-inline-start:auto;color:var(--mut);font-size:15px}
+.warn{background:var(--nob);border:1px solid var(--no);color:var(--no);border-radius:5px;padding:10px 14px;margin-bottom:14px;font-size:14.5px}
+.thanks{background:var(--okb);border:1px solid var(--ok);color:var(--ok);border-radius:5px;padding:10px 14px;margin-bottom:14px;font-weight:600}
+.row{margin:14px 0}
+.row .top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-weight:500}
+.bar{height:14px;background:var(--bd);border-radius:3px;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;background:var(--navy2);transition:width .5s}
+.row.top1 .bar i{background:var(--gold)}
+.row.top1 .top b{color:var(--gold)}
+.note{border:1px solid var(--gold);border-inline-start-width:5px;background:var(--bg);border-radius:4px;padding:10px 14px;margin:14px 0 0;font-size:14.5px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<header>
+  <small>المدرسة العليا للأساتذة - ملحقة الوادي</small>
+  <h1>استبيان: موعد حصة المراجعة</h1>
+  <small>المقياس: الأعمال الموجهة (TD) فيزياء 1</small>
+  <small>الأستاذ: أنس عبد الصمد بوطهرة</small>
+</header>
+<main>
+<div id="warn" class="warn hide">لم يُضبط رابط الجدول (SHEET_URL) بعد، لن تُسجَّل الإجابات.</div>
+
+<section id="formCard" class="card">
+  <h2>اختر الوقت المناسب لك</h2>
+  <div class="mut">ستُبرمج حصة مراجعة عبر Google Meet كل أسبوعين. اختر جميع الأوقات التي تناسبك، وسيُعتمد الوقت الأكثر اختيارًا.</div>
+
+  <div class="q">الاسم واللقب <span style="color:var(--no)">*</span></div>
+  <input type="text" id="name" autocomplete="name" maxlength="80">
+
+  <div class="q">الأوقات المناسبة لك (يمكنك اختيار أكثر من وقت) <span style="color:var(--no)">*</span></div>
+  <div id="slots"></div>
+
+  <div class="q">هل تواجه مشاكل في الاتصال بالإنترنت أثناء الحصص المباشرة؟ <span style="color:var(--no)">*</span></div>
+  <div id="net"></div>
+
+  <button class="btn" id="send" disabled>إرسال اختياري</button>
+  <button class="btn alt" id="peek">عرض النتائج دون التصويت</button>
+  <div class="mut" style="margin-top:12px">يظهر اسمك للأستاذ فقط، وتظهر للجميع أعداد الأصوات دون أسماء. إن أعدت الإرسال بالاسم نفسه تُحتسب آخر إجابة لك.</div>
+</section>
+
+<section id="resCard" class="card hide">
+  <div id="thx" class="thanks hide">✓ تم تسجيل اختيارك، شكرًا لك.</div>
+  <h2>نتائج الاستبيان</h2>
+  <div class="mut" id="tot"></div>
+  <div id="bars"></div>
+  <div id="msg" class="note hide"></div>
+  <button class="btn alt" id="refresh">تحديث النتائج</button>
+  <button class="btn alt" id="back">العودة إلى الاستبيان</button>
+</section>
+</main>
+<script>
+const SHEET_URL="https://script.google.com/macros/s/AKfycbwKQup1rWpQuS5hAbzBAz9MKjNN7OMflLUpZQDOU2VmXx9mAKFELgA2F8cyEExDQtK1/exec"; // ضع هنا الرابط نفسه المستعمل في الاختبار (ينتهي بـ /exec)
+const SLOTS=[["wed","الأربعاء","09:00 – 11:00"],["thu","الخميس","09:00 – 11:00"],["fri","الجمعة","14:00 – 16:00"]];
+const NET=[["ok","لا، اتصالي جيد"],["some","أحيانًا"],["bad","نعم، أواجه مشاكل في الاتصال"]];
+const $=id=>document.getElementById(id);
+let sel=new Set(),net="";
+if(!SHEET_URL)$("warn").classList.remove("hide");
+
+function build(box,items,multi,onPick){
+  items.forEach(it=>{
+    const b=document.createElement("button");b.type="button";b.className="opt"+(multi?" multi":"");
+    b.innerHTML="<span class='mk'></span><span></span>"+(it[2]?"<bdi dir='ltr'>"+it[2]+"</bdi>":"");
+    b.children[1].textContent=it[1];b.dataset.k=it[0];
+    b.onclick=()=>onPick(it[0],b);box.appendChild(b);
+  });
+}
+build($("slots"),SLOTS,true,(k,b)=>{sel.has(k)?sel.delete(k):sel.add(k);b.classList.toggle("s");check()});
+build($("net"),NET,false,(k,b)=>{net=k;[...$("net").children].forEach(c=>c.classList.toggle("s",c===b));check()});
+function check(){$("send").disabled=!($("name").value.trim().length>=3&&sel.size&&net)}
+$("name").oninput=check;
+
+async function load(){
+  $("bars").innerHTML="";$("tot").textContent="جارٍ تحميل النتائج…";$("msg").classList.add("hide");
+  try{
+    const r=await fetch(SHEET_URL+"?action=poll&t="+Date.now());
+    const d=await r.json();draw(d);return true;
+  }catch(e){
+    $("tot").textContent="";$("msg").textContent="تعذّر عرض النتائج الآن. اضغط «تحديث النتائج» بعد قليل.";$("msg").classList.remove("hide");return false;
+  }
+}
+function draw(d){
+  const total=d.total||0,max=Math.max(0,...SLOTS.map(s=>d.counts[s[0]]||0));
+  $("tot").textContent="عدد المشاركين: "+total;
+  $("bars").innerHTML=SLOTS.map(s=>{
+    const c=d.counts[s[0]]||0,p=total?Math.round(c/total*100):0,top=max>0&&c===max;
+    return "<div class='row"+(top?" top1":"")+"'><div class='top'><span>"+s[1]+" <bdi dir='ltr'>"+s[2]+"</bdi>"+(top?" <b>★ الأكثر اختيارًا</b>":"")+"</span><span><bdi dir='ltr'>"+c+" ("+p+"%)</bdi></span></div><div class='bar'><i style='width:"+p+"%'></i></div></div>";
+  }).join("");
+  const tops=SLOTS.filter(s=>max>0&&(d.counts[s[0]]||0)===max);
+  if(tops.length>1){$("msg").textContent="تعادل بين عدة أوقات في الوقت الحالي، وسيُعلن الأستاذ الموعد النهائي بعد انتهاء الاستبيان.";$("msg").classList.remove("hide")}
+  else{$("msg").textContent="النتائج مؤقتة وقد تتغير مع مشاركة بقية الطلبة، وسيُعلن الأستاذ الموعد النهائي.";$("msg").classList.remove("hide")}
+}
+function show(card){$("formCard").classList.toggle("hide",card!=="form");$("resCard").classList.toggle("hide",card!=="res")}
+$("send").onclick=async()=>{
+  if(!SHEET_URL)return;
+  $("send").disabled=true;$("send").textContent="جارٍ الإرسال…";
+  try{
+    await fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"poll",name:$("name").value.trim(),slots:[...sel],net})});
+    $("thx").classList.remove("hide");show("res");await load();
+  }catch(e){
+    $("send").textContent="إرسال اختياري";check();alert("تعذّر الإرسال، تأكد من اتصالك بالإنترنت وأعد المحاولة.");
+  }
+  $("send").textContent="إرسال اختياري";check();
+};
+$("peek").onclick=async()=>{if(!SHEET_URL)return;$("thx").classList.add("hide");show("res");await load()};
+$("refresh").onclick=load;
+$("back").onclick=()=>show("form");
+</script>
+</body>
+</html>
