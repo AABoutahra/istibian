@@ -73,6 +73,7 @@ button{font:inherit;cursor:pointer}
 </section>
 
 <section id="resCard" class="card hide">
+  <div id="closed" class="thanks hide"></div>
   <div id="thx" class="thanks hide">✓ تم تسجيل اختيارك، شكرًا لك.</div>
   <h2>نتائج الاستبيان</h2>
   <div class="mut" id="tot"></div>
@@ -119,6 +120,19 @@ function draw(d){
     const c=d.counts[s[0]]||0,p=total?Math.round(c/total*100):0,top=max>0&&c===max;
     return "<div class='row"+(top?" top1":"")+"'><div class='top'><span>"+s[1]+" <bdi dir='ltr'>"+s[2]+"</bdi>"+(top?" <b>★ الأكثر اختيارًا</b>":"")+"</span><span><bdi dir='ltr'>"+c+" ("+p+"%)</bdi></span></div><div class='bar'><i style='width:"+p+"%'></i></div></div>";
   }).join("");
+
+  // حالة إغلاق الاستبيان
+  $("back").classList.toggle("hide",!!d.closed);
+  if(d.closed){
+    const f=SLOTS.find(s=>s[0]===d.final);
+    $("closed").innerHTML="🔒 أُغلق الاستبيان."+(f?" الموعد المعتمد لحصة المراجعة: <b>"+f[1]+"</b> <bdi dir='ltr'>"+f[2]+"</bdi>":"");
+    $("closed").classList.remove("hide");
+    $("thx").classList.add("hide");
+    $("msg").classList.add("hide");
+    return;
+  }
+  $("closed").classList.add("hide");
+
   const tops=SLOTS.filter(s=>max>0&&(d.counts[s[0]]||0)===max);
   if(tops.length>1){$("msg").textContent="تعادل بين عدة أوقات في الوقت الحالي، وسيُعلن الأستاذ الموعد النهائي بعد انتهاء الاستبيان.";$("msg").classList.remove("hide")}
   else{$("msg").textContent="النتائج مؤقتة وقد تتغير مع مشاركة بقية الطلبة، وسيُعلن الأستاذ الموعد النهائي.";$("msg").classList.remove("hide")}
@@ -138,6 +152,16 @@ $("send").onclick=async()=>{
 $("peek").onclick=async()=>{if(!SHEET_URL)return;$("thx").classList.add("hide");show("res");await load()};
 $("refresh").onclick=load;
 $("back").onclick=()=>show("form");
+
+// عند فتح الصفحة: إن كان الاستبيان مغلقًا نعرض النتائج والموعد المعتمد مباشرة
+(async function init(){
+  if(!SHEET_URL)return;
+  try{
+    const r=await fetch(SHEET_URL+"?action=poll&t="+Date.now());
+    const d=await r.json();
+    if(d.closed){show("res");draw(d)}
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
