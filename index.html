@@ -94,7 +94,7 @@ if(!SHEET_URL)$("warn").classList.remove("hide");
 function build(box,items,multi,onPick){
   items.forEach(it=>{
     const b=document.createElement("button");b.type="button";b.className="opt"+(multi?" multi":"");
-    b.innerHTML="<span class='mk'></span><span></span>"+(it[2]?"<bdi dir='ltr'>"+it[2]+"</bdi>":"");
+    b.innerHTML="<span class='mk'></span><span></span>"+(it[2]?"<bdi dir='rtl'>"+it[2]+"</bdi>":"");
     b.children[1].textContent=it[1];b.dataset.k=it[0];
     b.onclick=()=>onPick(it[0],b);box.appendChild(b);
   });
@@ -118,14 +118,14 @@ function draw(d){
   $("tot").textContent="عدد المشاركين: "+total;
   $("bars").innerHTML=SLOTS.map(s=>{
     const c=d.counts[s[0]]||0,p=total?Math.round(c/total*100):0,top=max>0&&c===max;
-    return "<div class='row"+(top?" top1":"")+"'><div class='top'><span>"+s[1]+" <bdi dir='ltr'>"+s[2]+"</bdi>"+(top?" <b>★ الأكثر اختيارًا</b>":"")+"</span><span><bdi dir='ltr'>"+c+" ("+p+"%)</bdi></span></div><div class='bar'><i style='width:"+p+"%'></i></div></div>";
+    return "<div class='row"+(top?" top1":"")+"'><div class='top'><span>"+s[1]+" <bdi dir='rtl'>"+s[2]+"</bdi>"+(top?" <b>★ الأكثر اختيارًا</b>":"")+"</span><span><bdi dir='ltr'>"+c+" ("+p+"%)</bdi></span></div><div class='bar'><i style='width:"+p+"%'></i></div></div>";
   }).join("");
 
   // حالة إغلاق الاستبيان
   $("back").classList.toggle("hide",!!d.closed);
   if(d.closed){
     const f=SLOTS.find(s=>s[0]===d.final);
-    $("closed").innerHTML="🔒 أُغلق الاستبيان."+(f?" الموعد المعتمد لحصة المراجعة: <b>"+f[1]+"</b> <bdi dir='ltr'>"+f[2]+"</bdi>":"");
+    $("closed").innerHTML="🔒 أُغلق الاستبيان."+(f?" الموعد المعتمد لحصة المراجعة: <b>"+f[1]+"</b> <bdi dir='rtl'>"+f[2]+"</bdi>":"");
     $("closed").classList.remove("hide");
     $("thx").classList.add("hide");
     $("msg").classList.add("hide");
