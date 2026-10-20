@@ -1,0 +1,42 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TD Phys1 ENS El Oued//Review Sessions//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:حصص مراجعة TD فيزياء 1
+X-WR-TIMEZONE:Africa/Algiers
+BEGIN:VTIMEZONE
+TZID:Africa/Algiers
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0100
+TZNAME:CET
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:td-phys1-review-20261022@aaboutahra.github.io
+DTSTAMP:20261020T080631Z
+DTSTART;TZID=Africa/Algiers:20261022T090000
+DTEND;TZID=Africa/Algiers:20261022T110000
+RRULE:FREQ=WEEKLY;INTERVAL=2;COUNT=8
+SUMMARY:حصة مراجعة - TD فيزياء 1
+LOCATION:Google Meet
+URL:https://meet.google.com/ehz-nmgk-pvz
+DESCRIPTION:حصة المراجعة عبر Google Meet كل أسبوعين.
+ \nرابط الحصة: https://meet.google.com/ehz-nmgk-pvz\nالرجاء 
+ تجربة التطبيق قبل الموعد وتحضير الأسئلة 
+ والاستشكالات.
+STATUS:CONFIRMED
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:حصة المراجعة بعد ساعة
+TRIGGER:-PT1H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:حصة المراجعة غدًا
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
